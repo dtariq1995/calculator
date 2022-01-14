@@ -1,3 +1,5 @@
+
+// perform basic math operations between two numbers
 function add(a, b) {
     return (a + b);
 }
@@ -14,105 +16,80 @@ function divide(a, b) {
     return (a / b);
 }
 
+
 // take an operator and two numbers and then calls basic math functions from above
 function operate(operator, num1, num2) {
 
     if (operator == "+") {
         return add(num1, num2);
     }
-    if (operator == "-") {
+    if (operator == "−") {
         return subtract(num1, num2);
     }
-    if (operator == "*") {
+    if (operator == "x") {
         return multiply(num1, num2);
     }
-    if (operator == "/") {
+    if (operator == "÷") {
         return divide(num1, num2);
     }
 }
 
-function updateDisplay() {
-    let display = document.querySelector("#display");
-    display.textContent = "45";
-}
 
-
-
-function getOperator() {
-
-    let operatorButtons = document.querySelectorAll('.operator');
-    operatorButtons.forEach((operator) => {
-        operator.addEventListener('click', () => {
-            operatorSelection = operator.textContent;
-            console.log(operatorSelection);
-            return operatorSelection;
-        });
-    });
-}
-
-
-
-function getNums() {
-
-
-    let digitButtons = document.querySelectorAll('.digit');
-    digitButtons.forEach((digits) => {
-        digits.addEventListener('click', () => {
-            num1 = num1.concat(digits.textContent);
-            display.textContent = num1;
-            console.log(num1);
-        });
-    });
-
-
-    let operatorButtons = document.querySelectorAll('.operator');
-    operatorButtons.forEach((operator) => {
-        operator.addEventListener('click', () => {
-            operatorSelection = operator.textContent;
-            console.log(operatorSelection);
-            
-            let digitsButtons = document.querySelectorAll('.digit');
-            digitsButtons.forEach((digit) => {
-                digit.addEventListener('click', () => {
-                    num2 = num2.concat(digit.textContent);
-                    display.textContent = num2;
-                    console.log(num2);
-                });
-            });
-        });
-    });
-}
-
-
+// clears inputs and resets calculator
 function clear() {
 
-    let clear = document.querySelector('#clear');
-    clear.addEventListener('click', () => {
-        display.textContent = 0;
-        num1 = "";
-        operatorSelection = "";
-        num2 = "";
-    });
+    display.textContent = 0;
+    num = "";
+    num1 = "";
+    operatorSelection = "";
+    num2 = "";
+    console.log("Input cleared");
 }
 
 
+// gets operator 
+function mathOperator() {
 
-a = 15;
-b = 3;
-console.log(add(a, b));
-console.log(subtract(a, b));
-console.log(multiply(a, b));
-console.log(divide(a, b));
-console.log(operate("+", a, b));
+    operatorSelection = this.textContent;
+    console.log(operatorSelection);
+}
+
+
+function getNumber() {
+
+    num = num.concat(this.textContent);
+    display.textContent = num;
+    console.log(num);
+}
+
+// adds event listener to operator buttons
+let operatorButtons = document.querySelectorAll('.operator');
+operatorButtons.forEach((operator) => {
+    operator.addEventListener('click', mathOperator);
+});
+
+
+
+
+let digitButtons = document.querySelectorAll('.digit');
+digitButtons.forEach((digits) => {
+    digits.addEventListener('click', getNumber);
+});
+
+
+let clearButton = document.querySelector('#clear');
+clearButton.addEventListener('click', clear);
 
 let display = document.querySelector('#display');
 let num1 = "";
 let operatorSelection= "";
 let num2 = "";
+let num = "";
 
 
-getNums();
-clear();
+
+
+
 
 
 
