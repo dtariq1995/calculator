@@ -33,7 +33,10 @@ function operate(operator, num1, num2) {
         return multiply(num1, num2);
     }
     if (operator == "÷") {
-        if (num2 == 0) return null;
+        if (num2 == 0) {
+            alert("Everyone knows you can't divide by zero!!");
+            clear();
+        }
         else {
             return divide(num1, num2);
         }
@@ -47,6 +50,7 @@ function clear() {
     display.textContent = 0;
     num = "";
     num1 = "";
+    answer = "";
     operatorSelection = "";
     num2 = "";
     console.log("Input cleared");
