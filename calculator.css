@@ -91,3 +91,9 @@ button {
     border-color: rgb(255, 192, 111);
     transition-timing-function: ease-in-out;
 }
+
+#decimal {
+    background-color: rgb(75, 75, 75);
+    border-color: rgb(75, 75, 75);
+    color: white;
+}

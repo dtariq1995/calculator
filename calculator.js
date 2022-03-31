@@ -72,12 +72,14 @@ function getNumber() {
 
 // rounds answer
 function round(answer) {
+
     return Math.round(answer * 1000) / 1000;
 }
 
 
 // carry out equation once equal button is pressed
 function equal() {
+
     num2 = display.textContent;
     let answer = operate(operatorSelection, num1, num2)
     answer = round(answer);
@@ -88,6 +90,17 @@ function equal() {
     console.log(answer);
 }
 
+// add decimal point and don't allow user to add one if already one decimal point in number
+function decimalPoint() {
+
+    if (display.textContent.indexOf('.') > -1) {
+        return;
+    }
+    else {
+        num = num.concat(this.textContent);
+        display.textContent = num;
+    }
+}
 
 
 let display = document.querySelector('#display');
@@ -118,7 +131,9 @@ clearButton.addEventListener('click', clear);
 let equalButton = document.querySelector('#equals');
 equalButton.addEventListener('click', equal);
 
-
+// add decimal point when decimal button pressed
+let decimalButton = document.querySelector('#decimal');
+decimalButton.addEventListener('click', decimalPoint);
 
 
 
