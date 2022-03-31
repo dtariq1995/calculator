@@ -58,7 +58,6 @@ function mathOperator() {
 
     operatorSelection = this.textContent;
     num1 = display.textContent;
-
     num = "";
 }
 
@@ -75,6 +74,10 @@ function equal() {
     num2 = display.textContent;
     let answer = operate(operatorSelection, num1, num2)
     display.textContent = answer;
+    console.log(num1);
+    console.log(operatorSelection);
+    console.log(num2);
+    console.log(answer);
 }
 
 
