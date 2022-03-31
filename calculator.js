@@ -69,10 +69,18 @@ function getNumber() {
     return num;
 }
 
+
+// rounds answer
+function round(answer) {
+    return Math.round(answer * 1000) / 1000;
+}
+
+
 // carry out equation once equal button is pressed
 function equal() {
     num2 = display.textContent;
     let answer = operate(operatorSelection, num1, num2)
+    answer = round(answer);
     display.textContent = answer;
     console.log(num1);
     console.log(operatorSelection);
