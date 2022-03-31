@@ -106,6 +106,14 @@ function decimalPoint() {
     }
 }
 
+// allow user to backspace
+function deleteNumber() {
+    display.textContent = display.textContent
+        .toString()
+        .slice(0, -1);
+    num = display.textContent;
+}
+
 
 let display = document.querySelector('#display');
 let num1 = "";
@@ -139,8 +147,9 @@ equalButton.addEventListener('click', equal);
 let decimalButton = document.querySelector('#decimal');
 decimalButton.addEventListener('click', decimalPoint);
 
-
-
+// delete last digit or decimal when clicked
+let deleteButton = document.querySelector('#delete');
+deleteButton.addEventListener('click', deleteNumber);
 
 
 
