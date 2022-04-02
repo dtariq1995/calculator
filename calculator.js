@@ -58,17 +58,17 @@ function clear() {
 
 
 // gets operator 
-function mathOperator() {
+function mathOperator(operator) {
 
-    operatorSelection = this.textContent;
+    operatorSelection = operator;
     num1 = display.textContent;
     num = "";
 }
 
 // get number 
-function getNumber() {
+function getNumber(number) {
 
-    num = num.concat(this.textContent);
+    num = num.concat(number);
     display.textContent = num;
     return num;
 }
@@ -101,7 +101,7 @@ function decimalPoint() {
         return;
     }
     else {
-        num = num.concat(this.textContent);
+        num = num.concat('.');
         display.textContent = num;
     }
 }
@@ -114,30 +114,40 @@ function deleteNumber() {
     num = display.textContent;
 }
 
+// add keyboard support  WORK ON THIS
+function keyboardSupport(e) {
+    if (e.key >= 0 && e.key <= 9) getNumber(e.key);
+    if (e.key === '.') decimalPoint();
+    if (e.key === '=' || e.key === "Enter") equal();
+    if (e.key === 'Backspace' || e.key === "Delete") deleteNumber();
+    if (e.key === "+") mathOperator("+");
+    if (e.key === "-") mathOperator("−");
+    if (e.key === "/") mathOperator("÷");
+    if (e.key === "*") mathOperator("x");
+}
+
 
 let display = document.querySelector('#display');
 let num1 = "";
 let operatorSelection= null;
 let num2 = "";
 let num = "";
-let resetDisplay = false;
 
 // adds event listener to operator buttons
 let operatorButtons = document.querySelectorAll('.operator');
 operatorButtons.forEach((operator) => {
-    operator.addEventListener('click', mathOperator);
+    operator.addEventListener('click', () => mathOperator(operator.textContent));
 });
 
 // add event listener to digits buttons
 let digitButtons = document.querySelectorAll('.digit');
 digitButtons.forEach((digits) => {
-    digits.addEventListener('click', getNumber);
+    digits.addEventListener('click', () => getNumber(digits.textContent));
 });
 
 // reset calculator when user presses AC button
 let clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click', clear);
-
 
 // call operate function when equal button is pressed
 let equalButton = document.querySelector('#equals');
@@ -151,7 +161,8 @@ decimalButton.addEventListener('click', decimalPoint);
 let deleteButton = document.querySelector('#delete');
 deleteButton.addEventListener('click', deleteNumber);
 
-
+// add keyboard support
+window.addEventListener('keydown', keyboardSupport);
 
 
 
