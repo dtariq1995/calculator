@@ -5,10 +5,11 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: rgb(167, 167, 167);
 }
 
@@ -111,5 +112,19 @@ button {
     color: white;
 }
 
+footer {
+    display: flex;
+    font-family: "SF Pro";
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px;
+    padding-top: 25px;
+    bottom: 0;
+    color: black;
+    width: 100vw;
+    font-size: 18px;
+}
 
-
+a {
+    color: black;
+}

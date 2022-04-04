@@ -5,52 +5,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>aPhoneCalculator</title>
 </head>
 <body>
 
+    <main>
+        <div id="calc-body">
 
-    <div id="calc-body">
-
-        <div id="display">0</div>
-
-        <div class="top">
-            <button id="clear" class="misc-button">AC</button>
-            <button id="plusminus" class="misc-button">+/-</button>
-            <button id="delete" class="misc-button">␡</button>
-            <button class="operator">÷</button>
+            <div id="display">0</div>
+    
+            <div class="top">
+                <button id="clear" class="misc-button">AC</button>
+                <button id="plusminus" class="misc-button">+/-</button>
+                <button id="delete" class="misc-button">␡</button>
+                <button class="operator">÷</button>
+            </div>
+    
+            <div class="2nd">
+                <button class="digit">7</button>
+                <button class="digit">8</button>
+                <button class="digit">9</button>
+                <button class="operator">x</button>
+            </div>
+    
+            <div class="3rd">
+                <button class="digit">4</button>
+                <button class="digit">5</button>
+                <button class="digit">6</button>
+                <button class="operator">−</button>
+            </div>
+    
+            <div class="4th">
+                <button class="digit">1</button>
+                <button class="digit">2</button>
+                <button class="digit">3</button>
+                <button class="operator">+</button>
+            </div>
+    
+            <div class="5th">
+                <button class="digit" id="zero">0</button>
+                <button id="decimal">.</button>
+                <button id="equals">=</button>
+            </div>
+    
         </div>
-
-        <div class="2nd">
-            <button class="digit">7</button>
-            <button class="digit">8</button>
-            <button class="digit">9</button>
-            <button class="operator">x</button>
-        </div>
-
-        <div class="3rd">
-            <button class="digit">4</button>
-            <button class="digit">5</button>
-            <button class="digit">6</button>
-            <button class="operator">−</button>
-        </div>
-
-        <div class="4th">
-            <button class="digit">1</button>
-            <button class="digit">2</button>
-            <button class="digit">3</button>
-            <button class="operator">+</button>
-        </div>
-
-        <div class="5th">
-            <button class="digit" id="zero">0</button>
-            <button id="decimal">.</button>
-            <button id="equals">=</button>
-        </div>
-
-    </div>
+    </main>
 
 
+    <footer>
+        <p>Created by: <img src="Assets/GitHub-Mark-32px.png" height="18px" width="18px"><a href ="https://github.com/dtariq1995"> Daanyaal Tariq</a></p>
+    </footer>
+    
     <script src="./calculator.js"></script>
 </body>
 </html>
