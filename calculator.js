@@ -34,7 +34,7 @@ function operate(operator, num1, num2) {
     }
     if (operator == "÷") {
         if (num2 == 0) {
-            alert("Did you really just try to divide by zero???");
+            alert("Did you really just try to divide by zero??? ಠ_ಠ");
             clear();
         }
         else {
