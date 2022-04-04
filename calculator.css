@@ -35,6 +35,7 @@ body {
     background-color: rgb(231, 231, 231);
     border-color: rgb(231, 231, 231);
     color: black;
+    transition-timing-function: ease-in-out;
 }
 
 .digit {
@@ -110,6 +111,7 @@ button {
     background-color: rgb(139, 139, 139);
     border-color: rgb(139, 139, 139);
     color: white;
+    transition-timing-function: ease-in-out;
 }
 
 footer {
