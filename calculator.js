@@ -47,13 +47,12 @@ function operate(operator, num1, num2) {
 // clears inputs and resets calculator
 function clear() {
 
-    display.textContent = 0;
+    display.textContent = "0";
     num = "";
     num1 = "";
     answer = "";
     operatorSelection = "";
     num2 = "";
-    console.log("Input cleared");
 }
 
 
@@ -64,6 +63,7 @@ function mathOperator(operator) {
     num1 = display.textContent;
     num = "";
 }
+
 
 // get number 
 function getNumber(number) {
@@ -84,30 +84,36 @@ function round(answer) {
 // carry out equation once equal button is pressed
 function equal() {
 
-    num2 = display.textContent;
-    let answer = operate(operatorSelection, num1, num2)
+    if (prevNum1 == num1 && prevNum2 == num2 && prevAns == answer) {
+        answer = operate(operatorSelection, prevAns, num2);
+    }
+
+    else {
+        num2 = display.textContent;
+        answer = operate(operatorSelection, num1, num2)
+    }
+
     answer = round(answer);
     display.textContent = answer;
-    console.log(num1);
-    console.log(operatorSelection);
-    console.log(num2);
-    console.log(answer);
+    prevNum1 = num1;
+    prevNum2 = num2;
+    prevAns = answer;
     num = "";
-    num1 = num2;
-
 }
+
 
 // add decimal point and don't allow user to add one if already one decimal point in number
 function decimalPoint() {
 
-    if (num.indexOf('.') > -1) {
+    if (num.indexOf(".") > -1) {
         return;
     }
     else {
-        num = num.concat('.');
+        num = num.concat(".");
         display.textContent = num;
     }
 }
+
 
 // allow user to backspace
 function deleteNumber() {
@@ -118,29 +124,43 @@ function deleteNumber() {
     num = display.textContent;
 }
 
-// add keyboard support  WORK ON THIS
+
+// add keyboard support
 function keyboardSupport(e) {
 
     if (e.key >= 0 && e.key <= 9) getNumber(e.key);
-    if (e.key === '.') decimalPoint();
-    if (e.key === '=' || e.key === "Enter") equal();
-    if (e.key === 'Backspace' || e.key === "Delete") deleteNumber();
+    if (e.key === ".") decimalPoint();
+    if (e.key === "=" || e.key === "Enter") equal();
+    if (e.key === "Backspace" || e.key === "Delete") deleteNumber();
     if (e.key === "+") mathOperator("+");
     if (e.key === "-") mathOperator("−");
     if (e.key === "/") mathOperator("÷");
     if (e.key === "*") mathOperator("x");
 }
 
+
 // change numbers between positive and negative
-function changeSign() {
-    
+function plusMinus() {
+
+    if (display.textContent.indexOf("-") > -1) {
+        display.textContent = display.textContent.replace("-","");
+    }
+    else {
+        display.textContent = "-" + display.textContent;
+    }
 }
 
+
+// declaring variables
 let display = document.querySelector('#display');
 let num1 = "";
 let operatorSelection= null;
 let num2 = "";
 let num = "";
+let answer = "";
+let prevNum1 = "asdf"; // placeholder text needed for equal function to work properly
+let prevNum2 = "asdf";
+let prevAns = "asdf";
 
 // adds event listener to operator buttons
 let operatorButtons = document.querySelectorAll('.operator');
@@ -170,7 +190,11 @@ decimalButton.addEventListener('click', decimalPoint);
 let deleteButton = document.querySelector('#delete');
 deleteButton.addEventListener('click', deleteNumber);
 
-// add keyboard support
+// add functionality for +/- button
+let plusMinusButton = document.querySelector('#plusminus');
+plusMinusButton.addEventListener('click', plusMinus);
+
+// add listener for when user presses a key
 window.addEventListener('keydown', keyboardSupport);
 
 
