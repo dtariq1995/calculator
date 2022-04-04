@@ -34,7 +34,7 @@ function operate(operator, num1, num2) {
     }
     if (operator == "÷") {
         if (num2 == 0) {
-            alert("Everyone knows you can't divide by zero!!");
+            alert("Did you really just try to divide by zero???");
             clear();
         }
         else {
@@ -74,7 +74,7 @@ function getNumber(number) {
 }
 
 
-// rounds answer
+// rounds answer to avoid overflowing with decimals
 function round(answer) {
 
     return Math.round(answer * 1000) / 1000;
@@ -92,12 +92,15 @@ function equal() {
     console.log(operatorSelection);
     console.log(num2);
     console.log(answer);
+    num = "";
+    num1 = num2;
+
 }
 
 // add decimal point and don't allow user to add one if already one decimal point in number
 function decimalPoint() {
 
-    if (display.textContent.indexOf('.') > -1) {
+    if (num.indexOf('.') > -1) {
         return;
     }
     else {
@@ -108,6 +111,7 @@ function decimalPoint() {
 
 // allow user to backspace
 function deleteNumber() {
+
     display.textContent = display.textContent
         .toString()
         .slice(0, -1);
@@ -116,6 +120,7 @@ function deleteNumber() {
 
 // add keyboard support  WORK ON THIS
 function keyboardSupport(e) {
+
     if (e.key >= 0 && e.key <= 9) getNumber(e.key);
     if (e.key === '.') decimalPoint();
     if (e.key === '=' || e.key === "Enter") equal();
@@ -126,6 +131,10 @@ function keyboardSupport(e) {
     if (e.key === "*") mathOperator("x");
 }
 
+// change numbers between positive and negative
+function changeSign() {
+    
+}
 
 let display = document.querySelector('#display');
 let num1 = "";
