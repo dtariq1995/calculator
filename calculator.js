@@ -68,16 +68,24 @@ function mathOperator(operator) {
 // get number 
 function getNumber(number) {
 
-    num = num.concat(number);
-    display.textContent = num;
-    return num;
+    if (num.length < 9) {   // limit size of number
+        num = num.concat(number);
+        display.textContent = num;
+        return num;
+    }
 }
 
 
-// rounds answer to avoid overflowing with decimals
+// rounds answer to avoid overflowing with decimals, also change to scientific notation if too big
 function round(answer) {
 
-    return Math.round(answer * 1000) / 1000;
+    answer = Math.round(answer * 1000) / 1000;
+
+    if (answer.toString().length > 9) {   // if answer is longer than 9, convert to scientific notation to avoid overflow
+        answer = answer.toExponential(3);
+    }
+
+    return answer;
 }
 
 
@@ -158,7 +166,7 @@ let operatorSelection= null;
 let num2 = "";
 let num = "";
 let answer = "";
-let prevNum1 = "asdf"; // placeholder text needed for equal function to work properly
+let prevNum1 = "asdf";   // placeholder text needed for equal function to work properly
 let prevNum2 = "asdf";
 let prevAns = "asdf";
 
